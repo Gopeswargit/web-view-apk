@@ -1,0 +1,27 @@
+name: Build and Release Webview APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build_apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 2. Build Webview APK
+        uses: xavier-laurans/build-webview-apk@v1.0.0
+        with:
+          APK_NAME: 'MCQ_Test_Webview_App'
+          PACKAGE_NAME: 'com.example.mcqwebviewapp'
+          SOURCE_PATH: 'index.html' # এই ফাইলটিকে APK এর মধ্যে লোড করবে
+
+      - name: 3. Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mcq-webview-apk
+          path: output/MCQ_Test_Webview_App.apk
+          retention-days: 7
