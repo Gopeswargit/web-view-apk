@@ -22,6 +22,6 @@ jobs:
       - name: 3. Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mcq-webview-apk
-          path: output/MCQ_Test_Webview_App.apk
+          name: mcq-webview-apkoutput/MCQ_Test_Webview_App.apk
+          path: 
           retention-days: 7
